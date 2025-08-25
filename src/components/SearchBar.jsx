@@ -116,7 +116,7 @@ export function SearchBar({ onSearch, locations }) {
         >
           ✕
         </button>
-        <form className="flex flex-col items-center mt-10 w-full gap-4">
+        <form className="flex flex-col items-center mt-10 w-full gap-4" onSubmit={handleSearch}>
           <div className="flex justify-center items-center w-full">
             <div className="relative w-35">
               <input
@@ -160,17 +160,14 @@ export function SearchBar({ onSearch, locations }) {
               className="border border-gray-200 h-20 px-4 w-40"
               value={
                 adults + children > 0
-                  ? `${adults + children} guest${
-                      adults + children > 1 ? "s" : ""
-                    }`
+                  ? `${adults + children} guest${adults + children > 1 ? "s" : ""}`
                   : "Add Guest"
               }
               readOnly
             />
             <button
-              type="button"
+              type="submit"
               className="text-orange-600 border border-gray-200 rounded-r-2xl h-20 px-4 "
-              onClick={handleSearch}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

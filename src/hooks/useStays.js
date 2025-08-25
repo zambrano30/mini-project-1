@@ -17,11 +17,14 @@ export function useStays() {
   useEffect(() => {
     let result = stays;
     if (location) {
-      result = result.filter(
-        (stay) =>
+      result = result.filter((stay) => {
+        const cityCountry = `${stay.city}, ${stay.country}`.toLowerCase();
+        return (
           stay.city.toLowerCase() === location.toLowerCase() ||
-          stay.country.toLowerCase() === location.toLowerCase()
-      );
+          stay.country.toLowerCase() === location.toLowerCase() ||
+          cityCountry === location.toLowerCase()
+        );
+      });
     }
     if (guests > 0) {
       result = result.filter(
